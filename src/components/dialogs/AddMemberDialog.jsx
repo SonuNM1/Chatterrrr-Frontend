@@ -5,21 +5,30 @@ import {
   Skeleton,
   Stack,
   Typography,
-} from "@mui/material";
+} from "@mui/material"; // Importing Material UI components
+
 import React, { useState } from "react";
+
 import { sampleUsers } from "../../constants/sampleData";
+
 import UserItem from "../shared/UserItem";
+
 import {
   useAddGroupMembersMutation,
   useAvailableFriendsQuery,
 } from "../../redux/api/api";
-import { useAsyncMutation, useErrors } from "../../hooks/hook";
-import { useDispatch, useSelector } from "react-redux";
-import { setIsAddMember } from "../../redux/reducers/misc";
-const AddMemberDialog = ({ chatId }) => {
-  const dispatch = useDispatch();
 
-  const { isAddMember } = useSelector((state) => state.misc);
+import { useAsyncMutation, useErrors } from "../../hooks/hook";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { setIsAddMember } from "../../redux/reducers/misc";
+
+const AddMemberDialog = ({ chatId }) => {
+
+  const dispatch = useDispatch();   // initializing the dispatch function for redux actions 
+
+  const { isAddMember } = useSelector((state) => state.misc);   // accessing the redux state 
 
   const { isLoading, data, isError, error } = useAvailableFriendsQuery(chatId);
 
